@@ -1,0 +1,51 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu&family=Varela+Round&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #6bcb77;
+}
+
+/* Main Container */
+#main-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5vw;
+  flex-direction: column;
+}
+
+/* Heading */
+#heading {
+  font-family: "Varela Round", sans-serif;
+}
+/* Music Photo */
+
+#photo {
+  width: 27vw;
+  border-radius: 20px;
+}
+
+/* Music Name */
+#name {
+  font-family: "Ubuntu", sans-serif;
+}
+
+/* Music Author */
+#author {
+  font-family: "Varela Round", sans-serif;
+}
+
+#seekBar {
+  width: 30vw;
+  -webkit-appearance: none;
+  height: 10px;
+  cursor: ew-resize;
+  background: #434343;
+  /* box-shadow: -80px 0 0 80px #43e5f7; */
+}
