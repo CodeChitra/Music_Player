@@ -1,14 +1,14 @@
 let songs = [
-    { "sgName": "Thunder Beats", "sgAuthor": "Mia Khalifa", "sg": "songs/1.mp3", "sgPhoto": "covers/1.jpg" },
-    { "sgName": "The Unstopabble", "sgAuthor": "Sunny Leone", "sg": "songs/2.mp3", "sgPhoto": "covers/2.jpg" },
-    { "sgName": "Too Lusty", "sgAuthor": "Mia Malkoa", "sg": "songs/3.mp3", "sgPhoto": "covers/3.jpg" },
-    { "sgName": "Best Friends", "sgAuthor": "Dani Daniels", "sg": "songs/4.mp3", "sgPhoto": "covers/4.jpg" },
-    { "sgName": "Heart Broken", "sgAuthor": "Kendra Lust", "sg": "songs/5.mp3", "sgPhoto": "covers/5.jpg" },
-    { "sgName": "Thunder Beats", "sgAuthor": "Crystal Lust", "sg": "songs/6.mp3", "sgPhoto": "covers/6.jpg" },
-    { "sgName": "Thunder Beats", "sgAuthor": "Brandi Love", "sg": "songs/7.mp3", "sgPhoto": "covers/7.jpg" },
-    { "sgName": "Thunder Beats", "sgAuthor": "Johny Sins", "sg": "songs/8.mp3", "sgPhoto": "covers/8.jpg" },
-    { "sgName": "Thunder Beats", "sgAuthor": "King Jordy", "sg": "songs/9.mp3", "sgPhoto": "covers/9.jpg" },
-    { "sgName": "Thunder Beats", "sgAuthor": "Mia Stankovich", "sg": "songs/10.mp3", "sgPhoto": "covers/10.jpg" }
+    { "sgName": "Thunder Beats", "sgAuthor": "Johny Stark", "sg": "songs/1.mp3", "sgPhoto": "covers/1.jpg" },
+    { "sgName": "The Unstopabble", "sgAuthor": "DJ Walter", "sg": "songs/2.mp3", "sgPhoto": "covers/2.jpg" },
+    { "sgName": "Too Lusty", "sgAuthor": "Stanis", "sg": "songs/3.mp3", "sgPhoto": "covers/3.jpg" },
+    { "sgName": "Best Friends", "sgAuthor": "Poppins", "sg": "songs/4.mp3", "sgPhoto": "covers/4.jpg" },
+    { "sgName": "Heart Broken", "sgAuthor": "Jack grey", "sg": "songs/5.mp3", "sgPhoto": "covers/5.jpg" },
+    { "sgName": "Thunder Beats", "sgAuthor": "DJ Walter", "sg": "songs/6.mp3", "sgPhoto": "covers/6.jpg" },
+    { "sgName": "Thunder Beats", "sgAuthor": "Stanis", "sg": "songs/7.mp3", "sgPhoto": "covers/7.jpg" },
+    { "sgName": "Thunder Beats", "sgAuthor": "Moon Crystal", "sg": "songs/8.mp3", "sgPhoto": "covers/8.jpg" },
+    { "sgName": "Thunder Beats", "sgAuthor": "Poppins", "sg": "songs/9.mp3", "sgPhoto": "covers/9.jpg" },
+    { "sgName": "Thunder Beats", "sgAuthor": "Johny Stark", "sg": "songs/10.mp3", "sgPhoto": "covers/10.jpg" }
 ]
 
 // Song PLay Pause Functionality
@@ -23,7 +23,7 @@ playBt.addEventListener("click", () => {
         playBt.classList.remove("fa-circle-play");
         playBt.classList.add("fa-circle-pause");
         audioElem.play();
-        seekBar.value = (audioElem.currentTime / audioElem.duration) * 100;
+        start();
     }
     else {
         playBt.classList.remove("fa-circle-pause");
@@ -32,13 +32,15 @@ playBt.addEventListener("click", () => {
     }
 })
 
-// Seek Bar Functionality And Synchroization with song
 
-audioElem.addEventListener("timeupdate", () => {
-    let progress = parseInt((audioElem.currentTime / audioElem.duration) * 100);
-    seekBar.value = progress;
-})
+function start() {
 
+    audioElem.addEventListener("timeupdate", () => {
+        let progress = parseInt((audioElem.currentTime / audioElem.duration) * 100);
+        seekBar.value = progress;
+    })
+
+}
 seekBar.addEventListener("change", () => {
     audioElem.currentTime = ((seekBar.value * audioElem.duration) / 100);
 })
@@ -57,9 +59,10 @@ forward.addEventListener("click", () => {
         i++;
     }
     audioElem.pause();
-    seekBar.value = (audioElem.currentTime / audioElem.duration) * 100;
-    audioElem.currentTime = 0;
     audioElem = new Audio(songs[i].sg);
+
+    audioElem.currentTime = 0;
+    start();
     audioElem.play();
     naam.innerText = songs[i].sgName;
     author.innerText = songs[i].sgAuthor;
@@ -74,10 +77,10 @@ backward.addEventListener("click", () => {
         i--;
     }
     audioElem.pause();
-    seekBar.value = (audioElem.currentTime / audioElem.duration) * 100;
-    audioElem.currentTime = 0;
     audioElem = new Audio(songs[i].sg);
+    start()
     audioElem.play();
+    // audioElem.currentTime = 0;
     naam.innerText = songs[i].sgName;
     author.innerText = songs[i].sgAuthor;
     photo.src = songs[i].sgPhoto;
