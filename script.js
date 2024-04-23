@@ -14,6 +14,7 @@ function loadSong(index) {
     naam.innerText = songs[index].sgName;
     author.innerText = songs[index].sgAuthor;
     photo.src = songs[index].sgPhoto;
+    seekBar.value = 0;
 }
 
 // Function to play or pause the song
